@@ -1,7 +1,20 @@
 [package]
 name = "rot-server"
+description = "Server for the rot project"
+license = "MIT"
+repository = "github.com/skeptrunedev/rot"
+readme = "../README.md"
+keywords = ["rot", "server"]
+categories = ["development-tools::build-tools"]
 version = "0.1.0"
 edition = "2021"
+
+[lints.clippy]
+all = "deny"
+pedantic = "deny"
+nursery = "deny"
+cargo = "deny"
+unwrap_used = "deny"
 
 [dependencies]
 actix-web = "4.9.0"

@@ -1,3 +1,5 @@
+#![allow(clippy::multiple_crate_versions)]
+
 use actix_web::{web, App, HttpServer, Responder};
 
 async fn index() -> impl Responder {
