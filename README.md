@@ -26,6 +26,8 @@ I am the ideal Rot user and will be completely ok with being its only user.
 - [ ] view posts by tag
 - [ ] get list of posts ordered by recency, popularity, or alphabetical
   - [ ] support pagination
+- [ ] sitemap included
+- [ ] RSS included
 
 ## CLI commands
 
