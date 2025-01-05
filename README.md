@@ -10,7 +10,7 @@ However, existing frameworks are either too no-code'y or require too much manual
 
 I am the ideal Rot user and will be completely ok with being its only user.
 
-## Desired Functionality
+## Desired Functionality in Stable Release
 
 - [ ] ability to use tailwind in templates
 - [ ] ability to use tailwind and raw HTML in mdx
@@ -28,6 +28,12 @@ I am the ideal Rot user and will be completely ok with being its only user.
   - [ ] support pagination
 - [ ] sitemap included
 - [ ] RSS included
+  - [ ] all posts
+  - [ ] for each tag
+
+## Wish List Functionality
+
+- [ ] support for link blogging
 
 ## CLI commands
 
