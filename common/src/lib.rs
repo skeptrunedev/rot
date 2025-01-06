@@ -27,7 +27,7 @@ impl From<&str> for RotError {
 
 /// Configuration options for the application
 #[derive(Debug, Clone, Serialize, Deserialize)]
-pub struct ConfigOptions {
+pub struct RotConfig {
     /// The domain of the blog, e.g. "example.com"
     pub domain: String,
     /// The port for the server to listen on
@@ -38,7 +38,7 @@ pub struct ConfigOptions {
     pub post_dir: String,
 }
 
-impl TryFrom<HashMap<String, String>> for ConfigOptions {
+impl TryFrom<HashMap<String, String>> for RotConfig {
     type Error = RotError;
 
     fn try_from(value: HashMap<String, String>) -> Result<Self, Self::Error> {
@@ -63,22 +63,10 @@ impl TryFrom<HashMap<String, String>> for ConfigOptions {
     }
 }
 
-/// Retrieves the configuration from the default configuration file.
-///
-/// # Errors
-///
-/// Returns a `RotError` if:
-/// - The configuration file cannot be deserialized
-/// - Required configuration fields are missing or invalid
-pub fn get_config() -> Result<ConfigOptions, RotError> {
-    let settings = Config::builder()
+#[must_use = "This function must be used to get the configuration"]
+pub fn get_config() -> Config {
+    Config::builder()
         .add_source(config::File::with_name("/etc/rot/Config"))
         .build()
-        .unwrap_or_default();
-
-    let map: HashMap<String, String> = settings
-        .try_deserialize()
-        .map_err(|e| RotError::from(format!("Error deserializing config: {e}")))?;
-
-    map.try_into()
+        .unwrap_or_default()
 }

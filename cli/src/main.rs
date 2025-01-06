@@ -1,21 +1,17 @@
 #![allow(clippy::multiple_crate_versions)]
 
 use clap::Parser;
+use utils::utilities::{RotArgs, RotUtils};
 
-#[derive(Parser, Debug)]
-#[command(version, about, long_about = None)]
-struct Args {
-    #[arg(short, long)]
-    name: String,
+pub mod utils;
 
-    #[arg(short, long, default_value_t = 1)]
-    count: u8,
-}
-
-fn main() {
-    let args = Args::parse();
-
-    for _ in 0..args.count {
-        println!("Hello {}!", args.name);
+pub fn main() {
+    let args = RotArgs::parse();
+    match args.cmd {
+        RotUtils::Init(u) => {
+            if let Err(e) = u.run() {
+                eprintln!("{}", e.message);
+            }
+        }
     }
 }
